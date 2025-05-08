@@ -86,9 +86,9 @@ else:
             st.warning("Failed to read frame from stream.")
             break
 
-        # Rotate only for 'record' videos
-        if "record" in STREAM_URL.lower():
-            frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        # # Rotate only for 'record' videos
+        # if "record" in STREAM_URL.lower():
+        #     frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
 
         # Convert BGR to RGB
         rgb_frame1 = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
