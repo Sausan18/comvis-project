@@ -3,6 +3,9 @@ import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
+import time
+
+time.sleep(0.02)
 
 st.set_page_config(layout="wide", page_title="Helmet Detection - CLAHE")
 st.write("## Deteksi Helm menggunakan YOLOV8 dan CLAHE")
@@ -116,7 +119,7 @@ else:
         # Convert to PIL image and display
         pil_img1 = Image.fromarray(annotated_frame1)
         pil_img2 = Image.fromarray(annotated_frame2)
-        frame_placeholder1.image(pil_img1)
-        frame_placeholder2.image(pil_img2)
+        frame_placeholder1.image(pil_img1, use_column_width=True)
+        frame_placeholder2.image(pil_img2, use_column_width=True)
 
 cap.release()
