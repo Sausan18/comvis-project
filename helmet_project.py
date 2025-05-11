@@ -143,7 +143,7 @@ else:
                     count_helm2 += 1
         
         
-    
+st.write(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm2}**")
         
 cap.release()
-st.write(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm2}**")
+
