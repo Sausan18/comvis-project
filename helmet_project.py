@@ -142,7 +142,7 @@ else:
                 if cls_id == 0:  # Ganti 0 dengan ID class helm
                     count_helm2 += 1
         
-        st.write(f"**Jumlah Deteksi (Tanpa CLAHE): {cls_id}**")
+        st.write(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm2}**")
     
         
 cap.release()
