@@ -63,7 +63,7 @@ elif add_selectbox == "Record 6":
 
 # with header:
 #     st.title("Deteksi Pengguna Helm dengan YOLOV8 dan CLAHE pada ETLE")
-# count_helm1 = 0
+count_helm1 = 0
 count_helm2 = 0
 count_nonhelm1 = 0
 count_nonhelm2 = 0
@@ -116,6 +116,27 @@ else:
         # Apply YOLO model
         results1 = model.predict(rgb_frame1, verbose=False)
         results2 = model.predict(rgb_frame2, verbose=False)
+        
+        def extract_crops_and_counts(results, frame_rgb, class_helm=0):
+            """Klasifikasikan deteksi helm dan non-helm, serta crop gambarnya"""
+            detections = results[0].boxes
+            helm_crops, non_helm_crops = [], []
+            helm_count, non_helm_count = 0, 0
+        
+            if detections is not None:
+                for box in detections:
+                    cls_id = int(box.cls[0].item())
+                    x1, y1, x2, y2 = map(int, box.xyxy[0].tolist())
+                    crop = frame_rgb[y1:y2, x1:x2]
+                    if cls_id == class_helm:
+                        helm_crops.append(crop)
+                        helm_count += 1
+                    else:
+                        non_helm_crops.append(crop)
+                        non_helm_count += 1
+        
+            return helm_count, non_helm_count, helm_crops, non_helm_crops
+
 
         # Plot results on frame
         annotated_frame1 = results1[0].plot()
@@ -151,14 +172,42 @@ else:
                     count_nonhelm2 += 1
                
         
-                st.write(f"**Jumlah Deteksi (Tanpa CLAHE - Helm): {count_helm1}**")
-                st.write(f"**Jumlah Deteksi (Tanpa CLAHE - NonHelm): {count_nonhelm1}**")
+                # st.write(f"**Jumlah Deteksi (Tanpa CLAHE - Helm): {count_helm1}**")
+                # st.write(f"**Jumlah Deteksi (Tanpa CLAHE - NonHelm): {count_nonhelm1}**")
             
             
-                st.write(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm2}**")
-                st.write(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
+                # st.write(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm2}**")
+                # st.write(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
         
 cap.release()
+
+# Ambil crop dan hitung untuk masing-masing versi
+count_helm1, count_nonhelm1, crops_helm1, crops_nonhelm1 = extract_crops_and_counts(results1, rgb_frame1)
+count_helm2, count_nonhelm2, crops_helm2, crops_nonhelm2 = extract_crops_and_counts(results2, rgb_frame2)
+
+# Tampilkan tabel dan hasil crop
+st.write("### 📊 Tabel Deteksi Tanpa CLAHE")
+colA, colB = st.columns(2)
+with colA:
+    st.markdown(f"**Helm: {count_helm1}**")
+    for crop in crops_helm1[:3]:
+        st.image(crop, caption="Helm", width=150)
+with colB:
+    st.markdown(f"**Non-Helm: {count_nonhelm1}**")
+    for crop in crops_nonhelm1[:3]:
+        st.image(crop, caption="Non-Helm", width=150)
+
+st.write("### 📊 Tabel Deteksi Dengan CLAHE")
+colC, colD = st.columns(2)
+with colC:
+    st.markdown(f"**Helm: {count_helm2}**")
+    for crop in crops_helm2[:3]:
+        st.image(crop, caption="Helm", width=150)
+with colD:
+    st.markdown(f"**Non-Helm: {count_nonhelm2}**")
+    for crop in crops_nonhelm2[:3]:
+        st.image(crop, caption="Non-Helm", width=150)
+
 
 
 
