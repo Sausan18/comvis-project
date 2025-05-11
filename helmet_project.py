@@ -64,6 +64,8 @@ elif add_selectbox == "Record 6":
 #     st.title("Deteksi Pengguna Helm dengan YOLOV8 dan CLAHE pada ETLE")
 
 # with model-run:
+count_helm1 =0
+count_helm2 =0
 with col1:
     st.write("📽️ Tanpa CLAHE")
     # Create a video container
