@@ -129,8 +129,8 @@ else:
         if detections is not None:
             for box in detections:
                 cls_id = int(box.cls[0].item())  # ambil ID kelas
-                if cls_id == 0:  # ganti sesuai ID class helm di model Anda
+                if cls_id == "helm":  # ganti sesuai ID class helm di model Anda
                     count_helm += 1
-        st.sidebar.markdown(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
+        st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
 
 cap.release()
