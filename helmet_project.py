@@ -131,6 +131,6 @@ else:
                 cls_id = int(box.cls[0].item())  # ambil ID kelas
                 if cls_id == "helm":  # ganti sesuai ID class helm di model Anda
                     count_helm += 1
-        st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
+        st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {cls_id}")
 
 cap.release()
