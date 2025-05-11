@@ -19,6 +19,8 @@ header = st.container()
 # model-run = st.container()
 col1, col2 = st.columns(2)
 col3, col4 = st.columns(2)
+table_placeholder1 = st.container()
+table_placeholder2 = st.container()
 
 @st.cache_resource
 def load_model():
@@ -181,32 +183,35 @@ else:
         
 cap.release()
 
-# Ambil crop dan hitung untuk masing-masing versi
+# Hitung dan ambil crop
 count_helm1, count_nonhelm1, crops_helm1, crops_nonhelm1 = extract_crops_and_counts(results1, rgb_frame1)
 count_helm2, count_nonhelm2, crops_helm2, crops_nonhelm2 = extract_crops_and_counts(results2, rgb_frame2)
 
-# Tampilkan tabel dan hasil crop
-st.write("### 📊 Tabel Deteksi Tanpa CLAHE")
-colA, colB = st.columns(2)
-with colA:
-    st.markdown(f"**Helm: {count_helm1}**")
-    for crop in crops_helm1[:3]:
-        st.image(crop, caption="Helm", width=150)
-with colB:
-    st.markdown(f"**Non-Helm: {count_nonhelm1}**")
-    for crop in crops_nonhelm1[:3]:
-        st.image(crop, caption="Non-Helm", width=150)
+# Update tampilan tabel di bawah stream
+with table_placeholder1:
+    st.write("### 📊 Tabel Deteksi Tanpa CLAHE")
+    colA, colB = st.columns(2)
+    with colA:
+        st.markdown(f"**Helm: {count_helm1}**")
+        for crop in crops_helm1[:2]:
+            st.image(crop, caption="Helm", width=120)
+    with colB:
+        st.markdown(f"**Non-Helm: {count_nonhelm1}**")
+        for crop in crops_nonhelm1[:2]:
+            st.image(crop, caption="Non-Helm", width=120)
 
-st.write("### 📊 Tabel Deteksi Dengan CLAHE")
-colC, colD = st.columns(2)
-with colC:
-    st.markdown(f"**Helm: {count_helm2}**")
-    for crop in crops_helm2[:3]:
-        st.image(crop, caption="Helm", width=150)
-with colD:
-    st.markdown(f"**Non-Helm: {count_nonhelm2}**")
-    for crop in crops_nonhelm2[:3]:
-        st.image(crop, caption="Non-Helm", width=150)
+with table_placeholder2:
+    st.write("### 📊 Tabel Deteksi Dengan CLAHE")
+    colC, colD = st.columns(2)
+    with colC:
+        st.markdown(f"**Helm: {count_helm2}**")
+        for crop in crops_helm2[:2]:
+            st.image(crop, caption="Helm", width=120)
+    with colD:
+        st.markdown(f"**Non-Helm: {count_nonhelm2}**")
+        for crop in crops_nonhelm2[:2]:
+            st.image(crop, caption="Non-Helm", width=120)
+
 
 
 
