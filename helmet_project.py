@@ -81,6 +81,9 @@ else:
         ret, frame = cap.read()
 
         # frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        frame_count += 1
+        if frame_count % 3 != 0:
+            continue  
 
         if not ret:
             st.warning("Failed to read frame from stream.")
