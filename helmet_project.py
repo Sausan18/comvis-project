@@ -149,10 +149,15 @@ else:
                 if cls_id == 1:  # Ganti 0 dengan ID class helm di model Anda
                     count_nonhelm2 += 1
                
+with col1:
+    st.write(f"**Jumlah Deteksi (Tanpa CLAHE - Helm): {count_helm1}**")
+    st.write(f"**Jumlah Deteksi (Tanpa CLAHE - NonHelm): {count_nonhelm1}**")
 
+with col2:
+    st.write(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm2}**")
+    st.write(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
         
 cap.release()
 
-st.write(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm1}**")
-st.write(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
+
 
