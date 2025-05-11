@@ -141,9 +141,9 @@ else:
                 cls_id = int(box.cls[0].item())
                 if cls_id == 0:  # Ganti 0 dengan ID class helm
                     count_helm2 += 1
-        
-with col2:       
-    st.write(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm2}**")
+               
+        st.write(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm1}**")
+        st.write(f"**Jumlah Deteksi (Dengan CLAHE): {count_helm2}**")
         
 cap.release()
 
