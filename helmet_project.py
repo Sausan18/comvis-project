@@ -134,7 +134,7 @@ else:
                     count_helm += 1
     
     with col2:
-    st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
+        st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
         
 
 cap.release()
