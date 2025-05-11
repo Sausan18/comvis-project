@@ -119,7 +119,7 @@ else:
         # Convert to PIL image and display
         pil_img1 = Image.fromarray(annotated_frame1)
         pil_img2 = Image.fromarray(annotated_frame2)
-        frame_placeholder1.image(pil_img1, use_column_width=True)
-        frame_placeholder2.image(pil_img2, use_column_width=True)
+        frame_placeholder1.image(pil_img1, use_container_width=True)
+        frame_placeholder2.image(pil_img2, use_container_width=True)
 
 cap.release()
