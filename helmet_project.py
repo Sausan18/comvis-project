@@ -62,10 +62,10 @@ elif add_selectbox == "Record 6":
 
 # with header:
 #     st.title("Deteksi Pengguna Helm dengan YOLOV8 dan CLAHE pada ETLE")
-# count_helm1 = 0
-# count_helm2 = 0
-# count_nonhelm1 = 0
-# count_nonhelm2 = 0
+count_helm1 = 0
+count_helm2 = 0
+count_nonhelm1 = 0
+count_nonhelm2 = 0
 with col1:
     st.write("📽️ Tanpa CLAHE")
     # Create a video container
@@ -130,7 +130,7 @@ else:
         # Hitung jumlah deteksi pada frame tanpa CLAHE
         detections1 = results1[0].boxes
 
-        # if detections1 is not None:
+        if detections1 is not None:
             for box in detections1:
                 cls_id = int(box.cls[0].item())
                 if cls_id == 0:  # Ganti 0 dengan ID class helm di model Anda
