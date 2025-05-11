@@ -127,11 +127,11 @@ else:
         # Hitung jumlah deteksi pada frame tanpa CLAHE
         detections1 = results1[0].boxes
         count_helm1 = 0
-        if detections1 is not None:
-            for box in detections1:
-                cls_id = int(box.cls[0].item())
-                if cls_id == 0:  # Ganti 0 dengan ID class helm di model Anda
-                    count_helm1 += 1
+        # if detections1 is not None:
+        #     for box in detections1:
+        #         cls_id = int(box.cls[0].item())
+        #         if cls_id == 0:  # Ganti 0 dengan ID class helm di model Anda
+        #             count_helm1 += 1
         
         # Hitung jumlah deteksi pada frame dengan CLAHE
         detections2 = results2[0].boxes
