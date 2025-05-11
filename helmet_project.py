@@ -1,5 +1,5 @@
 import cv2
-# import streamlit as st
+import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
@@ -95,7 +95,7 @@ else:
         if frame_count % 3 != 0:
             continue  
 
-        if not ret:
+        if not rewt:
             st.warning("Failed to read frame from stream.")
             break
 
