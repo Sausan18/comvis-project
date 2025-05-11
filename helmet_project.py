@@ -73,6 +73,8 @@ with col2:
     st.write("📽️✨ Dengan CLAHE")
     # Create a video container
     frame_placeholder2 = st.empty()
+    count_helm = 0
+    st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
 
 # Open the video stream
 cap = cv2.VideoCapture(STREAM_URL)
@@ -125,12 +127,12 @@ else:
 
         #count number of detection
         detections = results2[0].boxes  # mengambil hasil deteksi dengan CLAHE
-        count_helm = 0
+        
         if detections is not None:
             for box in detections:
                 cls_id = int(box.cls[0].item())  # ambil ID kelas
-                if cls_id == "helm":  # ganti sesuai ID class helm di model Anda
+                if cls_id == 1:  # ganti sesuai ID class helm di model Anda
                     count_helm += 1
-        st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {cls_id}")
+        
 
 cap.release()
