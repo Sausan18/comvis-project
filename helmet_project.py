@@ -121,5 +121,16 @@ else:
         pil_img2 = Image.fromarray(annotated_frame2)
         frame_placeholder1.image(pil_img1, use_container_width=True)
         frame_placeholder2.image(pil_img2, use_container_width=True)
+        
+
+        #count number of detection
+        detections = results2[0].boxes  # mengambil hasil deteksi dengan CLAHE
+        count_helm = 0
+        if detections is not None:
+            for box in detections:
+                cls_id = int(box.cls[0].item())  # ambil ID kelas
+                if cls_id == 0:  # ganti sesuai ID class helm di model Anda
+                    count_helm += 1
+        st.sidebar.markdown(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
 
 cap.release()
