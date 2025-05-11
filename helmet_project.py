@@ -68,11 +68,13 @@ with col1:
     st.write("📽️ Tanpa CLAHE")
     # Create a video container
     frame_placeholder1 = st.empty()
+    st.markdown(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm1}**")
 
 with col2:
     st.write("📽️✨ Dengan CLAHE")
     # Create a video container
     frame_placeholder2 = st.empty()
+    st.markdown(f"**Jumlah Deteksi (Dengan CLAHE): {count_helm2}**")
     
 
 # Open the video stream
@@ -124,17 +126,23 @@ else:
         frame_placeholder2.image(pil_img2, use_container_width=True)
         
 
-        #count number of detection
-        detections = results2[0].boxes  # mengambil hasil deteksi dengan CLAHE
-        count_helm = 0
-        if detections is not None:
-            for box in detections:
-                cls_id = int(box.cls[0].item())  # ambil ID kelas
-                if cls_id == 1:  # ganti sesuai ID class helm di model Anda
-                    count_helm += 1
-    
-    with col2:
-        st.write(f"### Jumlah Deteksi Helm (dengan CLAHE): {count_helm}")
+        # Hitung jumlah deteksi pada frame tanpa CLAHE
+        detections1 = results1[0].boxes
+        count_helm1 = 0
+        if detections1 is not None:
+            for box in detections1:
+                cls_id = int(box.cls[0].item())
+                if cls_id == 0:  # Ganti 0 dengan ID class helm di model Anda
+                    count_helm1 += 1
         
+        # Hitung jumlah deteksi pada frame dengan CLAHE
+        detections2 = results2[0].boxes
+        count_helm2 = 0
+        if detections2 is not None:
+            for box in detections2:
+                cls_id = int(box.cls[0].item())
+                if cls_id == 0:  # Ganti 0 dengan ID class helm
+                    count_helm2 += 1
 
+        
 cap.release()
