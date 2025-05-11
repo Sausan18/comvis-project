@@ -62,7 +62,19 @@ elif add_selectbox == "Record 6":
 
 # with header:
 #     st.title("Deteksi Pengguna Helm dengan YOLOV8 dan CLAHE pada ETLE")
+cls_id = 0
+with col1:
+    st.write("📽️ Tanpa CLAHE")
+    # Create a video container
+    frame_placeholder1 = st.empty()
+    st.markdown(f"**Jumlah Deteksi (Tanpa CLAHE): {cls_id}**")
 
+with col2:
+    st.write("📽️✨ Dengan CLAHE")
+    # Create a video container
+    frame_placeholder2 = st.empty()
+    st.markdown(f"**Jumlah Deteksi (Dengan CLAHE): {cls_id}**")
+    
 # Open the video stream
 cap = cv2.VideoCapture(STREAM_URL)
 
@@ -114,7 +126,7 @@ else:
 
         # Hitung jumlah deteksi pada frame tanpa CLAHE
         detections1 = results1[0].boxes
-        count_helm1 = 0
+        # count_helm1 = 0
         if detections1 is not None:
             for box in detections1:
                 cls_id = int(box.cls[0].item())
@@ -123,24 +135,14 @@ else:
         
         # Hitung jumlah deteksi pada frame dengan CLAHE
         detections2 = results2[0].boxes
-        count_helm2 = 0
+        # count_helm2 = 0
         if detections2 is not None:
             for box in detections2:
                 cls_id = int(box.cls[0].item())
                 if cls_id == 0:  # Ganti 0 dengan ID class helm
                     count_helm2 += 1
 
-with col1:
-    st.write("📽️ Tanpa CLAHE")
-    # Create a video container
-    frame_placeholder1 = st.empty()
-    st.markdown(f"**Jumlah Deteksi (Tanpa CLAHE): {count_helm1}**")
 
-with col2:
-    st.write("📽️✨ Dengan CLAHE")
-    # Create a video container
-    frame_placeholder2 = st.empty()
-    st.markdown(f"**Jumlah Deteksi (Dengan CLAHE): {count_helm2}**")
     
         
 cap.release()
