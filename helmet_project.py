@@ -18,6 +18,7 @@ st.sidebar.write("## Pilih Video Streaming / Recording")
 header = st.container()
 # model-run = st.container()
 col1, col2 = st.columns(2)
+col3, col4 = st.columns(2)
 
 @st.cache_resource
 def load_model():
@@ -149,11 +150,11 @@ else:
                 if cls_id == 1:  # Ganti 0 dengan ID class helm di model Anda
                     count_nonhelm2 += 1
                
-        with col1:
+        with col3:
             st.write(f"**Jumlah Deteksi (Tanpa CLAHE - Helm): {count_helm1}**")
             st.write(f"**Jumlah Deteksi (Tanpa CLAHE - NonHelm): {count_nonhelm1}**")
         
-        with col2:
+        with col4:
             st.write(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm2}**")
             st.write(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
         
