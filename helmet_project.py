@@ -80,6 +80,7 @@ else:
     frame_count = 0
     while True:
         ret, frame = cap.read()
+        frame = cv2.resize(frame, (640, 360))
         frame_count += 1
         if frame_count % 3 != 0:
             continue  
