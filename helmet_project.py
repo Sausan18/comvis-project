@@ -151,12 +151,12 @@ else:
                     count_nonhelm2 += 1
                
         with col3:
-            st.write(f"**Jumlah Deteksi (Tanpa CLAHE - Helm): {count_helm1}**")
-            st.write(f"**Jumlah Deteksi (Tanpa CLAHE - NonHelm): {count_nonhelm1}**")
+            st.markdown(f"**Jumlah Deteksi (Tanpa CLAHE - Helm): {count_helm1}**")
+            st.markdown(f"**Jumlah Deteksi (Tanpa CLAHE - NonHelm): {count_nonhelm1}**")
         
         with col4:
-            st.write(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm2}**")
-            st.write(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
+            st.markdown(f"**Jumlah Deteksi (Dengan CLAHE - Helm): {count_helm2}**")
+            st.markdown(f"**Jumlah Deteksi (Dengan CLAHE - Non Helm): {count_nonhelm2}**")
         
 cap.release()
 
