@@ -108,7 +108,7 @@ else:
         count_helm1, count_nonhelm1, crops_helm1, crops_nonhelm1 = extract_crops_and_counts(results1, rgb_frame1)
         count_helm2, count_nonhelm2, crops_helm2, crops_nonhelm2 = extract_crops_and_counts(results2, rgb_frame2)
 
-        with table_placeholder1:
+        with col1:
             st.write("### 📊 Tabel Deteksi Tanpa CLAHE")
             colA, colB = st.columns(2)
             with colA:
@@ -120,7 +120,7 @@ else:
                 for crop in crops_nonhelm1[:2]:
                     st.image(crop, caption="Non-Helm", width=120)
 
-        with table_placeholder2:
+        with col2:
             st.write("### 📊 Tabel Deteksi Dengan CLAHE")
             colC, colD = st.columns(2)
             with colC:
