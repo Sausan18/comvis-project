@@ -95,7 +95,7 @@ else:
         if frame_count % 3 != 0:
             continue  
 
-        if not rewt:
+        if not ret:
             st.warning("Failed to read frame from stream.")
             break
 
