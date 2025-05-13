@@ -137,8 +137,8 @@ def main():
             st.warning("Gagal membaca frame dari video.")
             break
 
-        if "record" in video_path.lower():
-            frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        # if "record" in video_path.lower():
+        #     frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
 
         img_no_clahe, img_with_clahe,result_no_clahe, result_with_clahe  = process_frame(frame, model, clip_limit, tile_grid_size)
         helmet_count1, no_helmet_count1, helm_crops1, non_helm_crops1 = count_detections(result_no_clahe,frame)
