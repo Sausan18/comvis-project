@@ -139,6 +139,7 @@ def main():
 
         # if "record" in video_path.lower():
         #     frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        frame = cv2.resize(frame, (640, 360))
 
         img_no_clahe, img_with_clahe,result_no_clahe, result_with_clahe  = process_frame(frame, model, clip_limit, tile_grid_size)
         helmet_count1, no_helmet_count1, helm_crops1, non_helm_crops1 = count_detections(result_no_clahe,frame)
