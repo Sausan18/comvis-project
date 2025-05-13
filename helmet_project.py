@@ -26,7 +26,7 @@ def sidebar_controls():
     tile_grid_size = st.sidebar.slider("CLAHE Tile Grid Size", 4, 16, 8, step=1)
 
     record_paths = {
-        "Record 1": "video1.mp4",
+        "Record 1": "record1.mp4",
         "Record 2": "record2.mp4",
         "Record 3": "record3.mp4",
         "Record 4": "record4.mp4",
